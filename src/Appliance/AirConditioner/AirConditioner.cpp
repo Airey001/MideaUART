@@ -26,7 +26,7 @@ static bool checkConstraints(const Mode &mode, const Preset &preset) {
     case Preset::PRESET_NONE:
       return true;
     case Preset::PRESET_ECO:
-      return mode == Mode::MODE_COOL;
+      return mode == MODE_COOL || mode == MODE_AUTO;
     case Preset::PRESET_TURBO:
       return mode == Mode::MODE_COOL || mode == Mode::MODE_HEAT;
     case Preset::PRESET_SLEEP:
