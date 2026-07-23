@@ -1,3 +1,42 @@
+This is a fork of the MideaUART project from https://github.com/dudanov/MideaUART. It is maintained to provide full compatibility with Midea U and Midea U+ air conditioners, including support for features and functionality specific to these models.
+
+The ESPHome Midea climate component has the MideaUART library hardcoded to use the upstream repository. To use this fork, you must create a custom copy of the ESPHome Midea component and modify the library reference.
+
+### 1. Modify the library reference
+
+Change the following line:
+
+**From:**
+
+```python
+cg.add_library("dudanov/MideaUART", "1.1.9")
+```
+
+**To:**
+
+```python
+cg.add_library("https://github.com/Airey001/MideaUART.git", None)
+```
+
+This instructs ESPHome to use this fork of the MideaUART library instead of the upstream version.
+
+### 2. Configure your ESPHome YAML
+
+Place your modified `midea` component in a local `components` directory within your ESPHome project, then add the following to your YAML configuration:
+
+```yaml
+external_components:
+  - source:
+      type: local
+      path: components
+    components:
+      - midea
+```
+
+This tells ESPHome to use your local copy of the `midea` component instead of the built-in version, allowing it to load the modified MideaUART library.
+
+
+
 # MideaUART
 Arduino framework library for controlling Midea home appliances using the UART protocol.
 
